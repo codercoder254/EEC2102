@@ -1,0 +1,13 @@
+*.o
+*.out
+*.exe
+
+build/
+bin/
+obj/
+
+*.tmp
+*.log
+*.bak
+
+vscode/ 
