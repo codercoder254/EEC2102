@@ -1,20 +1,21 @@
-//@a.d.a.n_noa😇
 #include <stdio.h>
 
 int main()
 {
-    int n;
-    printf("Enter an integer: ");
-    scanf("%d", &n);
-    int digits = 0;
-    int temp = n;
+    unsigned long long pin;
+    printf("Enter pin: ");
+    scanf("%llu", &pin);
 
-    while(temp > 0)
+    
+    int counter = 0;
+    while(pin > 0)
     {
-        digits++;
-        temp /= 10;
+        pin /= 10; //pin = pin / 10;
+        counter++;//counter = counter + 1;
     }
-    printf("Number of digits in %d is: %d\n", n, digits);
+
+    printf("Total digits: %d\n", counter);
 
     return 0;
+    
 }

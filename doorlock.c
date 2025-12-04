@@ -25,8 +25,8 @@ int deb_p(int pass_func)
                 break;
         }
 
-            digits = digits + 1;
-            temp = temp / 10;
+            digits++;
+            temp /= 10;
         }
 
         if (digits != 4)
