@@ -1,3 +1,4 @@
+//@a.d.a.n_noa😇
 #include <stdio.h>
 
 const int password = 4321;

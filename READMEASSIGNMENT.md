@@ -1,162 +1,125 @@
-#Assignment Submission
+# Assignment Submission ✅
 
-**Student Name:** Adan Onyancha
-**Student Registration No:** ENE212-0082/2024
-**Course:** ECE
-**email** codercoder254@gmail.com
+| **Student Name** | Adan Onyancha |
+| --- | --- |
+| **Registration No.** | ENE212-0082/2024 |
+| **Course** | ECE |
+| **Email** | codercoder254@gmail.com |
 
+---
 
-TASK 1: Pointer Concepts (Short Notes)
+## Task 1 — Pointer Concepts (Short Notes) 🔧
 
-1. Normal Variable vs Pointer
-A normal variable stores an actual value.
-Example: an int variable stores a number like 10.
-A pointer stores the address of a variable, not the value itself.
-Memory-wise:
+- **Normal variable vs pointer**
+  - A normal variable stores a value directly (e.g., `int x = 10;`).
+  - A pointer stores the address of a variable (e.g., `int *p = &x;`).
+  - Use `&` to get an address and `*` to dereference a pointer and access the value.
 
-A normal variable accesses memory directly.
-A pointer accesses memory indirectly by holding an address.
+- **Declaration examples**
 
-Reading & modifying:
-With a normal variable, you read or change the value directly.
-With a pointer, you must dereference it to read or change the value stored at that address.
+```c
+int x = 5;   // normal variable
+int *p = &x; // pointer to x
+```
 
-In short:
-A variable knows what the value is.
-A pointer knows where the value lives.
+- **Dereferencing**
+  - Dereferencing a pointer (`*p`) accesses the value at the address stored in `p`.
 
-2. Variable Declaration vs Pointer Declaration
-Normal variable:
-int x = 5;
-
-int → data type
-x → variable name
-5 → value stored
-
-Pointer:
-int *p;
-p = &x;
-
-*p → pointer to an integer
-&x → address of x
-
-Roles of operators:
-& (address-of): gives the memory location of a variable
-* (asterisk):
-In declaration → means “pointer”
-In usage → means “go to that address and access the value”
-
-3. Dereferencing a Pointer
-Dereferencing means accessing the value stored at the address inside a pointer.
-Example:
+```c
 int x = 10;
 int *p = &x;
+*p = 20; // now x == 20
+```
 
-p → address of x
-*p → value of x (10)
+- **When to use pointers**
+  - To allow functions to modify original data (pass-by-reference).
+  - For large data structures to avoid expensive copies.
+  - For dynamic memory management (heap allocation).
 
-Modifying through pointer:
-*p = 20;
+- **Risks and limitations**
+  - Uninitialized or invalid pointers cause undefined behavior.
+  - Incorrect memory access can crash programs.
+  - Forgetting to free allocated memory leads to leaks.
 
-Now x becomes 20.
-Pointers reach into memory and change things. Handle with care.
+- **Call by value vs call by reference**
+  - Call by value: function receives a copy — original remains unchanged.
+  - Call by reference: function receives an address — original can be modified.
 
-4. When Pointers Are Preferred
-Pointers are useful when:
-You want functions to modify original data
-You are dealing with large data structures
-You need dynamic memory
+```c
+void change_by_value(int x);
+void change_by_ref(int *x);
+```
 
-Examples:Swapping values in a function
-Without pointers → swap fails
-With pointers → swap works
+---
 
+## Task 2 — Display Address of a Variable 💡
 
-Arrays and strings
-Arrays are passed as pointers by default, making data access faster and memory-efficient.
+Prints the value and address of a variable.
 
-5. Limitations and Risks of Pointers
-Pointers are powerful but dangerous if abused:
-
-Uninitialized pointers can crash programs
-Wrong memory access leads to undefined behavior
-Memory leaks occur if allocated memory isn’t freed
-Harder to debug compared to normal variables
-
-
-
-6. Call by Value vs Call by Reference
-Call by Value:
-Function receives a copy
-Original value remains unchanged
-Call by Reference
-Function receives the address
-Original value gets modified
-
-Example difference:
-void change(int x);      // value
-void change(int *x);    // reference
-
-
-7. When to Use Each
-a. Call by Value
--When original data must remain safe
--Simple calculations
-
-
-b. Call by Reference
--When function must update values
--Large data structures (efficiency)
--Swapping, incrementing, modifying arrays
-
-TASK 2: Display Address of a Variable
+```c
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int num = 10;
     int *ptr = &num;
 
     printf("Value of num: %d\n", num);
-    printf("Value stored in ptr (address of num): %p\n", ptr);
-    printf("Address of num: %p\n", &num);
-    printf("Value accessed using *ptr: %d\n", *ptr);
+    printf("Address stored in ptr: %p\n", (void*)ptr);
+    printf("Address of num: %p\n", (void*)&num);
+    printf("Value via *ptr: %d\n", *ptr);
 
     return 0;
 }
+```
 
+---
 
-TASK 3: Access & Modify Value Using Pointer
+## Task 3 — Access & Modify Value Using Pointer 🔁
+
+Example of modifying a variable through a pointer.
+
+```c
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int count = 10;
     int *pCount = &count;
 
-    *pCount = 25;
-
+    *pCount = 25; // modifies count
     printf("Updated value of count: %d\n", count);
 
     return 0;
 }
+```
 
+---
 
-TASK 4: Add Two Numbers Using Pointers
+## Task 4 — Add Two Numbers Using Pointers ➕
+
+Adds two integers by dereferencing their pointers.
+
+```c
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int num1 = 5, num2 = 7;
     int *ptr1 = &num1;
     int *ptr2 = &num2;
 
     int sum = *ptr1 + *ptr2;
-
     printf("Sum: %d\n", sum);
 
     return 0;
 }
+```
 
+---
 
-TASK 5: Swap Two Numbers Using Pointers
+## Task 5 — Swap Two Numbers Using Pointers 🔀
+
+Swap two integers using pointers.
+
+```c
 #include <stdio.h>
 
 void swapNumbers(int *x, int *y) {
@@ -165,38 +128,46 @@ void swapNumbers(int *x, int *y) {
     *y = temp;
 }
 
-int main() {
+int main(void) {
     int a = 3, b = 7;
-
     printf("Before swap: a = %d, b = %d\n", a, b);
 
     swapNumbers(&a, &b);
-
     printf("After swap: a = %d, b = %d\n", a, b);
 
     return 0;
 }
+```
 
+---
 
-TASK 6: Pass by Value vs Pass by Reference
+## Task 6 — Pass by Value vs Pass by Reference 🔍
+
+Demonstrates difference between passing a value and passing an address.
+
+```c
 #include <stdio.h>
 
 void incrementByValue(int x) {
-    x++;
+    x++; // modifies local copy
 }
 
 void incrementByReference(int *x) {
-    (*x)++;
+    (*x)++; // modifies original
 }
 
-int main() {
+int main(void) {
     int num = 10;
 
     incrementByValue(num);
-    printf("After pass by value: %d\n", num);
+    printf("After pass by value: %d\n", num); // still 10
 
     incrementByReference(&num);
-    printf("After pass by reference: %d\n", num);
+    printf("After pass by reference: %d\n", num); // now 11
 
     return 0;
 }
+```
+
+---
+
