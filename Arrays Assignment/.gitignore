@@ -1,0 +1,15 @@
+*.exe
+*.out
+*.o
+
+*.obj
+
+*.log
+
+*.tmp
+*.swp
+
+build/
+bin/
+
+.vscode/
